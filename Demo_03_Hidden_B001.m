@@ -7,4 +7,5 @@ eMtx(3,[2,4]) = nan;
 temp = eMtx';
 cVec = temp(:);
 idx_nan = isnan(cVec);
-cVec = cVec(~idx_nan);
+% check: [temp(:),idx_nan]
+cVec = cVec(~idx_nan); % got the column vector.
