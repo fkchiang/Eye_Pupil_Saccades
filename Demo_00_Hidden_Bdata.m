@@ -1,7 +1,7 @@
 %% created by FKC, 8/05/2022
 clear;clc;close all;
 cd G:\
-for Subject = 1
+for Subject = 2
     if Subject == 1
         SubName = 'B';
     elseif Subject == 2
