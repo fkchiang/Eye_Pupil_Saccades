@@ -4,7 +4,7 @@ close all;clc;clear;
 % cd /home/fengkuei/04_tgEight_blkw % 6/25/2022 @ the brain
 cd G:\
 temparray = [];
-for Subject = 1
+for Subject = 1:2
     if Subject == 1
         SubName = 'B';
         gamma = 1;
@@ -25,7 +25,7 @@ for Subject = 1
         ConfigsInfo = tgBHV.ConfigsInfo;
         freq_table = tgBHV.freq_table;
         SacTable = tgBHV.SacTable;
-        idx_commonOrder = ConfigsInfo(:,3:10);   % [block#,commonOrder]    
+        idx_commonOrder = ConfigsInfo(:,3:10);   % [block#,commonOrder]
         blockChain = func_blockChain(sumTable);
         blockChain = func_removeBLK(blockChain); % remove blks with less than 20 trials
         for blk = 1:length(blockChain)
@@ -35,7 +35,7 @@ for Subject = 1
             temp_sumDiagRes = sum(ta_sorted(:)) - temp_sumDiag;
             tgBHV.SI(1,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
             
-            Hidden_Bdata.SI(s,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
+%             Hidden_data.(SubName).SI(s,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
             % % % % MI
             sac_array = SacTable{1,blk};
             [tf_matrix,counts_martrix] = func_mcTransMatrix(sac_array);
@@ -61,10 +61,10 @@ for Subject = 1
             tgBHV.MI(1:8, blk) = M;
             tgBHV.MI(  9, blk) = Q;
             tgBHV.MI( 10, blk) = gamma;
-            Hidden_Bdata.MI(s,blk) = Q;
+%             Hidden_data.(SubName).MI(s,blk) = Q;
             temparray=[temparray;M(idx_commonOrder(blk,:))'];
         end
-%         save(D(s).name,'tgBHV','-append');  
+        save(D(s).name,'tgBHV','-append');
         % saved, FKC, 6/26/2022
     end
 end
