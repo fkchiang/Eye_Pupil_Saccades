@@ -1,7 +1,7 @@
 %% created by FKC, 8/05/2022
 clear;clc;close all;
-cd G:\ % OneDrive\Documents\GitHub\Eye_Pupil_Saccades
-for Subject = 2
+% cd G:\ % OneDrive\Documents\GitHub\Eye_Pupil_Saccades
+for Subject = 1
     if Subject == 1
         SubName = 'B';
     elseif Subject == 2
@@ -26,6 +26,6 @@ for Subject = 2
         load([VarName '.mat'],'tgEyeData');
         filtEyeXY_CO = tgEyeData.filtEyeXY(idx_CO);
         Resp_XY_CO = cellfun(@(x,y) x(y,:),filtEyeXY_CO,norTimeStamp_CO,'un',false);
-        save([VarName '.mat'],'Resp_XY_CO','-append');        
+%         save([VarName '.mat'],'Resp_XY_CO','-append');        
     end
 end

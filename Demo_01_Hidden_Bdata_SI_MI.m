@@ -34,8 +34,7 @@ for Subject = 1:2
             temp_sumDiag = sum(diag(ta_sorted));
             temp_sumDiagRes = sum(ta_sorted(:)) - temp_sumDiag;
             tgBHV.SI(1,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
-            
-%             Hidden_data.(SubName).SI(s,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
+            % Hidden_data.(SubName).SI(s,blk) = (temp_sumDiag - temp_sumDiagRes)/(temp_sumDiag + temp_sumDiagRes);
             % % % % MI
             sac_array = SacTable{1,blk};
             [tf_matrix,counts_martrix] = func_mcTransMatrix(sac_array);
